@@ -1,0 +1,14 @@
+"start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+	
+	import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
+import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
+
+
+import @ckeditor/ckeditor5-theme-lark
+
+import Image from '@ckeditor/ckeditor5-image';

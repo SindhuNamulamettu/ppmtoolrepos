@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import { deleteProject } from "../../src/actions/projectActions";
+import { deleteProject } from "../actions/projectActions";
 class ProjectItem extends Component
 {
 

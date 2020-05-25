@@ -31,16 +31,14 @@ public class ProjectTask {
 	private String status;
 	private Integer priority;
 	private Date dueDate;
-	// ManyToOne with Backlog
+	// ManyToOne Relationship
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "backlog_id", updatable = false, nullable = false)
 	@JsonIgnore
 	private Backlog backlog;
 
 	@Column(updatable = false)
-	private String projectIdentifier;
-	
-
+	private String projectIdentifer;
 	private Date create_At;
 	private Date update_At;
 
@@ -86,13 +84,7 @@ public class ProjectTask {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getProjectIdentifier() {
-		return projectIdentifier;
-	}
 
-	public void setProjectIdentifier(String projectIdentifier) {
-		this.projectIdentifier = projectIdentifier;
-	}
 	public Integer getPriority() {
 		return priority;
 	}
@@ -109,7 +101,13 @@ public class ProjectTask {
 		this.dueDate = dueDate;
 	}
 
-	
+	public String getProjectIdentifer() {
+		return projectIdentifer;
+	}
+
+	public void setProjectIdentifer(String projectIdentifer) {
+		this.projectIdentifer = projectIdentifer;
+	}
 
 	public Date getCreate_At() {
 		return create_At;
@@ -150,7 +148,7 @@ public class ProjectTask {
 	public String toString() {
 		return "ProjectTask [id=" + id + ", projectSequence=" + projectSequence + ", summary=" + summary
 				+ ", acceptanceCriteria=" + acceptanceCriteria + ", status=" + status + ", priority=" + priority
-				+ ", dueDate=" + dueDate + ", projectIdentifer=" + projectIdentifier + ", create_At=" + create_At
+				+ ", dueDate=" + dueDate + ", projectIdentifer=" + projectIdentifer + ", create_At=" + create_At
 				+ ", update_At=" + update_At + "]";
 	}
 

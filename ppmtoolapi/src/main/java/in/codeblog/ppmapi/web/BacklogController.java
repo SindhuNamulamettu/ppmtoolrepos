@@ -2,7 +2,6 @@ package in.codeblog.ppmapi.web;
 
 import javax.validation.Valid;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,27 +17,26 @@ import in.codeblog.ppmapi.domain.ProjectTask;
 import in.codeblog.ppmapi.service.MapValidationErrorService;
 import in.codeblog.ppmapi.service.ProjectTaskService;
 
+
+
 @RestController
 @RequestMapping("/api/backlog")
 @CrossOrigin
-public class BackLogController {
-	
+public class BacklogController {
+
 	@Autowired
 	private ProjectTaskService projectTaskService;
+	
 	@Autowired
 	private MapValidationErrorService mapValidationErrorService;
 	
 	@PostMapping("/{backlog_id}")
-	public ResponseEntity<?> addPTtoBacklog(@Valid @RequestBody ProjectTask projectTask,
-			BindingResult result, @PathVariable String backlog_id){
+	public ResponseEntity<?> addPTtoBacklog(@Valid @RequestBody ProjectTask projectTask, BindingResult result,@PathVariable String backlog_id){
+		ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationError(result);
+		if(errorMap!=null) return errorMap;
 		
-		ResponseEntity<?>errorMap =mapValidationErrorService.mapValidationError(result);
-		if(errorMap!=null)
-			return errorMap;
-		
-		ProjectTask newProjectTask = projectTaskService.addProjectTask(backlog_id, projectTask);
-		return new ResponseEntity<ProjectTask>(newProjectTask,HttpStatus.CREATED);
+		ProjectTask projectTask1 = projectTaskService.addProjectTask(backlog_id, projectTask);
+		return new ResponseEntity<ProjectTask> (projectTask1,HttpStatus.CREATED);
 	}
-	}
-
-
+	
+}

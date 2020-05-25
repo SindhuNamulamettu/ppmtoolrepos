@@ -2,11 +2,14 @@ package in.codeblog.ppmapi.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotBlank;
@@ -35,8 +38,16 @@ public class Project {
 	@JsonFormat(pattern = "dd-MM-yyyy")
 	Date updated_At;
 	
+	//one to one relation with backlog
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "project")
+	private Backlog backlog;
 	
-	
+	public Backlog getBacklog() {
+		return backlog;
+	}
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
+	}
 	public Date getEnd_date() {
 		return end_date;
 	}
@@ -85,5 +96,6 @@ public class Project {
 		
 		
 	}
-
+	
+	
 }

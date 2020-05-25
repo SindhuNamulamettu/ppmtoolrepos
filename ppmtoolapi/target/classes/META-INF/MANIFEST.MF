@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
+Built-By: Indhu
+Build-Jdk: 10.0.2
 Implementation-Title: ppmtoolapi
 Implementation-Version: 0.0.1-SNAPSHOT
-Build-Jdk-Spec: 1.8
+Implementation-Vendor-Id: in.codeblog
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ppmtoolapi
 Created-By: Maven Integration for Eclipse
 

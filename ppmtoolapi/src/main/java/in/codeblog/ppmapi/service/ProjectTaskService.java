@@ -47,9 +47,9 @@ public class ProjectTaskService {
 
 		projectTask.setProjectSequence(projectIdentifier + "-" + backLogSequence);
 		projectTask.setProjectIdentifer(projectIdentifier);
-
-		if (projectTask.getPriority() == null) {
-			projectTask.setPriority(3);
+		//If project task is created first time 
+		if (projectTask.getPriority()==0  || projectTask.getPriority() == null) {
+			projectTask.setPriority(3);//low priority
 		}
 		if (projectTask.getStatus() == "" || projectTask.getStatus() == null) {
 			projectTask.setStatus("TO-DO");
@@ -88,9 +88,9 @@ public class ProjectTaskService {
 		return projectTask;
 		
 	}
-	public ProjectTask updateByProjectSequence(ProjectTask updateTask,String backlog_id,String pt_id) {
+	public ProjectTask updateByProjectSequence(ProjectTask updatedTask,String backlog_id,String pt_id) {
 		ProjectTask projectTask=projectTaskRepository.findByProjectSequence(pt_id);
-		projectTask=updateTask;
+		projectTask=updatedTask;
 		return projectTaskRepository.save(projectTask);
 	}
 	public void deletePTByProjectSequence(String backlog_id,String pt_id) {

@@ -1,31 +1,30 @@
-import { GET_PROJECTS,GET_PROJECT,DELETE_PROJECT } from "../actions/type";
-const initialState={
-	projects:[],
-	project:{}
+import { GET_PROJECTS, GET_PROJECT, DELETE_PROJECT } from "../actions/type";
+const initialState = {
+  projects: [],
+  project: {},
 };
-export default function(state=initialState,action) {
-	switch(action.type){
-		case GET_PROJECTS:
-			return {
-				...state,
-				projects:action.payload
-			};
-		case GET_PROJECT:
-			return {
-				...state,
-				project:action.payload
-			};
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case GET_PROJECTS:
+      return {
+        ...state,
+        projects: action.payload,
+      };
+    case GET_PROJECT:
+      return {
+        ...state,
+        project: action.payload,
+      };
 
-			case DELETE_PROJECT:
+    case DELETE_PROJECT:
       return {
         ...state,
         projects: state.projects.filter(
-          project => project.projectIdentifier != action.payload
-        )
+          (project) => project.projectIdentifier != action.payload
+        ),
       };
 
-
-         default:
-			return state;
-	}
+    default:
+      return state;
+  }
 }

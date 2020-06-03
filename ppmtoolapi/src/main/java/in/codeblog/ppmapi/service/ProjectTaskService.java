@@ -40,15 +40,16 @@ public class ProjectTaskService {
 		//Project request should be like :projId-1
 		Integer backLogSequence = backlog.getPTSequence();
 		
-		//update projecttask sequence no
+		//update project task sequence no
 		backLogSequence++;
 		
 		backlog.setPTSequence(backLogSequence);
 
 		projectTask.setProjectSequence(projectIdentifier + "-" + backLogSequence);
 		projectTask.setProjectIdentifer(projectIdentifier);
+		
 		//If project task is created first time 
-		if (projectTask.getPriority()==0  || projectTask.getPriority() == null) {
+		if (projectTask.getPriority()==0 || projectTask.getPriority() == null) {
 			projectTask.setPriority(3);//low priority
 		}
 		if (projectTask.getStatus() == "" || projectTask.getStatus() == null) {
